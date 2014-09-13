@@ -9,7 +9,8 @@ void *threadFunc(void *arg)
 
     str=(char*)arg;
 
-    while(i < 15)
+    int count = 15;
+    while(i < count)
     {
         usleep(1);
         printf("threadFunc says: %s\n",str);
@@ -17,8 +18,8 @@ void *threadFunc(void *arg)
     }
 
     int* ret = (int*)malloc(sizeof(int));
-    *ret = 42;
-    pthread_exit(ret);
+    *ret = count;
+    pthread_exit((void*)ret);
 }
 
 int main(void)
